@@ -43,7 +43,7 @@ void verusHash(const v8::FunctionCallbackInfo<Value>& args) {
     HandleScope scope(isolate);
     if (args.Length() < 1) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments"))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments").ToLocalChecked())
         );
         return;
     }
@@ -51,13 +51,13 @@ void verusHash(const v8::FunctionCallbackInfo<Value>& args) {
     Local<Object> buffer;
     if (maybeBuffer.ToLocal(&buffer) != true) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
     if(!node::Buffer::HasInstance(buffer)) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
@@ -78,7 +78,7 @@ void verusHashV2(const v8::FunctionCallbackInfo<Value>& args) {
     HandleScope scope(isolate);
     if (args.Length() < 1) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments"))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments").ToLocalChecked())
         );
         return;
     }
@@ -86,13 +86,13 @@ void verusHashV2(const v8::FunctionCallbackInfo<Value>& args) {
     Local<Object> buffer;    
     if (maybeBuffer.ToLocal(&buffer) != true) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
     if(!node::Buffer::HasInstance(buffer)) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
@@ -116,7 +116,7 @@ void verusHashV2b(const v8::FunctionCallbackInfo<Value>& args) {
     HandleScope scope(isolate);
     if (args.Length() < 1) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments"))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments").ToLocalChecked())
         );
         return;
     }
@@ -124,13 +124,13 @@ void verusHashV2b(const v8::FunctionCallbackInfo<Value>& args) {
     Local<Object> buffer;    
     if (maybeBuffer.ToLocal(&buffer) != true) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
     if(!node::Buffer::HasInstance(buffer)) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
@@ -154,7 +154,7 @@ void verusHashV2b1(const v8::FunctionCallbackInfo<Value>& args) {
     HandleScope scope(isolate);
     if (args.Length() < 1) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments"))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments").ToLocalChecked())
         );
         return;
     }
@@ -162,13 +162,13 @@ void verusHashV2b1(const v8::FunctionCallbackInfo<Value>& args) {
     Local<Object> buffer;    
     if (maybeBuffer.ToLocal(&buffer) != true) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
     if(!node::Buffer::HasInstance(buffer)) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
@@ -213,7 +213,7 @@ void verusHashV2b2(const v8::FunctionCallbackInfo<Value>& args) {
     HandleScope scope(isolate);
     if (args.Length() < 1) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments"))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments").ToLocalChecked())
         );
         return;
     }
@@ -221,13 +221,13 @@ void verusHashV2b2(const v8::FunctionCallbackInfo<Value>& args) {
     Local<Object> buffer;    
     if (maybeBuffer.ToLocal(&buffer) != true) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
     if(!node::Buffer::HasInstance(buffer)) {
         isolate->ThrowException(
-            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects."))
+            Exception::TypeError(String::NewFromUtf8(isolate, "Invalid buffer objects.").ToLocalChecked())
         );
         return;
     }
@@ -305,7 +305,7 @@ void verusHashV2b2(const v8::FunctionCallbackInfo<Value>& args) {
     args.GetReturnValue().Set(Nan::NewBuffer(result, 32).ToLocalChecked());
 }
 
-void Init(Handle<Object> exports) {
+void Init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "init", verusInit);
 
   NODE_SET_METHOD(exports, "hash", verusHash);          //VerusHash V1
